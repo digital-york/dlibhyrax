@@ -48,9 +48,9 @@ zh:
     directory:
       suffix: "@example.org"
     footer:
-      copyright_html: "<strong>版权所有 &copy; 2017 Samvera</strong> 根据Apache许可证2.0版许可"
-      service_html: 的服务<a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+      copyright_html: "<strong>版权所有 &copy; 2017 约克大学</strong>"
+      service_html: 构建于<a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>基础上.
     institution_name: 机构
     institution_name_full: 机构名称
-    product_name: 蹄兔
-    product_twitter_handle: "@SamveraRepo"
+    product_name: 约克大学数字图书馆
+    product_twitter_handle: "@uoylibrary"

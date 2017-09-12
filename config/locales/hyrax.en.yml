@@ -44,10 +44,10 @@ en:
           title_tesim: Title
   hyrax:
     product_name:           "York Digital Library"
-    product_twitter_handle: "@SamveraRepo"
+    product_twitter_handle: "@uoylibrary"
     institution_name:       "University of York"
     institution_name_full:  "University of York"
-    account_name:           "My Institution Account Id"
+    account_name:           "yodl"
     directory:
       suffix:               "@example.org"
     footer:

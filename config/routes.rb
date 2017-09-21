@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Qa::Engine => '/qa'
+
   
   mount Blacklight::Engine => '/'
   
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  mount Qa::Engine => '/authorities'
+  #mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'
   root 'hyrax/homepage#index'

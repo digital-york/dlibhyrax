@@ -66,3 +66,5 @@ group :development, :test do
 end
 
 gem 'dlibhydra', git: 'https://github.com/digital-york/dlibhydra.git', branch: 'hyrax'
+
+gem 'hydra-role-management'

@@ -1,0 +1,6 @@
+<% lang_service = AuthorityService::LanguagesService.new %>
+<%= f.input :language, as: :multi_value_select,
+            collection: lang_service.select_all_options,
+            include_blank: "",
+            item_helper: lang_service.method(:include_current_value),
+            input_html: { class: 'form-control' } %>

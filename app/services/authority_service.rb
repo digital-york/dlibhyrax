@@ -46,7 +46,7 @@ module AuthorityService
 	class LanguagesService < Hyrax::QaSelectService
 		include ::FileAuthorityConcern
 		def initialize
-			super('languages')
+			super('language_list')
 		end
 	end
 

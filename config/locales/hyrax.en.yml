@@ -49,7 +49,19 @@ en:
     institution_name_full:  "University of York"
     account_name:           "yodl"
     directory:
-      suffix:               "@example.org"
+      suffix:               "@york.ac.uk"
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 University of York</strong>"
       service_html: Powered by <a href="http://samvera.org/" target="_blank">Samvera</a>.
+  simple_form:
+    hints:
+      defaults:
+        title:              ""
+        creator:            ""
+        keyword:            ""
+        license:            ""
+    labels:
+      defaults:
+        advisor_string:        "Supervisor"
+        license:                "Rights"
+        subject_resource_ids:  "Subject heading"

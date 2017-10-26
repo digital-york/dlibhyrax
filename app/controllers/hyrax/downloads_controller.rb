@@ -2,6 +2,14 @@ module Hyrax
   class DownloadsController < ApplicationController
     include Hydra::Controller::DownloadBehavior
 
+    url_maps ={
+        "http://dlib.york.ac.uk/digilibImages/"  => "/usr/digilib-webdocs/digilibImages/",
+        "https://dlib.york.ac.uk/digilibImages/" => "/usr/digilib-webdocs/digilibImages/",
+
+        "https://www.york.ac.uk/static/data/homepage/images/" => "/var/tmp/images/"
+    }
+
+
     def self.default_content_path
       :original_file
     end
@@ -17,11 +25,27 @@ module Hyrax
         # For derivatives stored on the local file system
         response.headers['Accept-Ranges'] = 'bytes'
         response.headers['Content-Length'] = File.size(file).to_s
+#byebug
         send_file file, derivative_download_options
       else
         #raise ActiveFedora::ObjectNotFoundError
         if asset.filetype='externalurl'
-          redirect_to asset.external_file_url
+          #redirect_to asset.external_file_url
+#byebug
+          if url_maps.any? {|k,v| k.include? asset.url}
+            url_maps.each do |k,v|
+                if asset.url.starts_with? k
+                  local_file = asset.url
+                  local_file[k] = v
+
+                  response.headers['Accept-Ranges'] = 'bytes'
+                  response.headers['Content-Length'] = File.size(local_file).to_s
+                  send_file local_file, derivative_download_options
+                end
+            end
+          else  # for other external files, just redirect ...
+            redirect_to asset.external_file_url
+          end
         else
           raise ActiveFedora::ObjectNotFoundError
         end

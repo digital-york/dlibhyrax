@@ -8,6 +8,8 @@ module Hyrax
 
         thumb = fetch_thumbnail(object)
         return unless thumb
+
+        # changes to avoid infinite loop while using Dlibhydra::FileSet
         return call(thumb) unless (thumb.is_a?(::FileSet) or thumb.is_a?(Dlibhydra::FileSet))
         if thumb.audio?
           audio_image

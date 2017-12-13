@@ -1,6 +1,6 @@
 # Generated via
 #  `rails generate hyrax:work Thesis`
-class Thesis < Dlibhydra::Thesis
+class Thesis < ::Dlibhydra::Thesis
   include ::Hyrax::WorkBehavior
 
   self.indexer = ThesisIndexer

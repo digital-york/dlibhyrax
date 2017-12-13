@@ -53,6 +53,10 @@ en:
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 University of York</strong>"
       service_html: Powered by <a href="http://samvera.org/" target="_blank">Samvera</a>.
+    base:
+      items:
+        type: Image Source
+
   simple_form:
     hints:
       defaults:

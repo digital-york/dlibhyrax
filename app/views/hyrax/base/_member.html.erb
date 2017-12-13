@@ -1,0 +1,32 @@
+<tr class="<%= dom_class(member) %> attributes">
+
+  <td>
+    <% if member.filetype=='embeddedfile' %>
+      Managed
+    <% elsif member.filetype=='externalurl' %>
+      external
+    <% elsif member.filetype=='managed' %>
+      local
+    <% end %>
+  </td>
+
+  <td class="thumbnail">
+    <%= render_thumbnail_tag member %>
+  </td>
+  <td class="attribute filename">
+    <% if member.filetype=='embeddedfile' %>
+      <%= link_to(member.link_name, contextual_path(member, @presenter)) %>
+    <% elsif member.external_file_url.presence and member.external_file_url!='NA'%>
+      <%= link_to(member.title[0], member.external_file_url) %>
+    <% end %>
+  </td>
+
+  <td class="attribute date_uploaded">
+    <%= member.try(:date_uploaded) %>
+  </td>
+  <td class="attribute permission"><%= member.permission_badge %></td>
+  <td>
+    <%= render 'actions', member: member %>
+  </td>
+</tr>
+

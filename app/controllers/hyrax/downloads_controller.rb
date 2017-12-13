@@ -2,13 +2,12 @@ module Hyrax
   class DownloadsController < ApplicationController
     include Hydra::Controller::DownloadBehavior
 
-    url_maps ={
+    @@url_maps ={
         "http://dlib.york.ac.uk/digilibImages/"  => "/usr/digilib-webdocs/digilibImages/",
         "https://dlib.york.ac.uk/digilibImages/" => "/usr/digilib-webdocs/digilibImages/",
 
-        "https://www.york.ac.uk/static/data/homepage/images/" => "/var/tmp/images/"
+        "https://www.york.ac.uk/static/data/homepage/images/" => "/var/tmp/images/"     # this is for testing ONLY
     }
-
 
     def self.default_content_path
       :original_file
@@ -25,22 +24,21 @@ module Hyrax
         # For derivatives stored on the local file system
         response.headers['Accept-Ranges'] = 'bytes'
         response.headers['Content-Length'] = File.size(file).to_s
-#byebug
         send_file file, derivative_download_options
       else
         #raise ActiveFedora::ObjectNotFoundError
         if asset.filetype='externalurl'
           #redirect_to asset.external_file_url
-#byebug
-          if url_maps.any? {|k,v| k.include? asset.url}
-            url_maps.each do |k,v|
-                if asset.url.starts_with? k
-                  local_file = asset.url
+          if @@url_maps.any? {|k,v| asset.external_file_url.include? k}
+            @@url_maps.each do |k,v|
+                if asset.external_file_url.starts_with? k
+                  local_file = asset.external_file_url.dup
                   local_file[k] = v
 
                   response.headers['Accept-Ranges'] = 'bytes'
                   response.headers['Content-Length'] = File.size(local_file).to_s
-                  send_file local_file, derivative_download_options
+
+                  send_file local_file, derivative_download_options_external(local_file)
                 end
             end
           else  # for other external files, just redirect ...
@@ -64,6 +62,10 @@ module Hyrax
       # a derivative file
       def derivative_download_options
         { type: mime_type_for(file), disposition: 'inline' }
+      end
+
+      def derivative_download_options_external(f)
+        { type: mime_type_for(f), disposition: 'attachment' }
       end
 
       # Customize the :read ability in your Ability class, or override this method.

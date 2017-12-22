@@ -65,6 +65,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'nokogiri', '>= 1.8.1'
+
 #gem 'dlibhydra', git: 'https://github.com/digital-york/dlibhydra.git', branch: 'hyrax'
 gem 'dlibhydra', git: 'https://github.com/digital-york/dlibhydra.git', branch: 'hyrax_external_file'
 

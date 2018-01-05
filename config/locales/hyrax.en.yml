@@ -56,6 +56,16 @@ en:
     base:
       items:
         type: Image Source
+      form_files:
+        local_upload_html: Upload Files
+      form_urls:
+        header: External Files
+    works:
+      form:
+        tab:
+          files: Upload Files
+          urls: External URLs
+
 
   simple_form:
     hints:

@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'hyrax', '2.0.1'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'xray-rails'
 end
 
 gem 'rsolr', '>= 1.0'
@@ -71,3 +72,4 @@ gem 'nokogiri', '>= 1.8.1'
 gem 'dlibhydra', git: 'https://github.com/digital-york/dlibhydra.git', branch: 'hyrax_external_file'
 
 gem 'hydra-role-management'
+gem 'hydra-head', '>= 10.5.0'
